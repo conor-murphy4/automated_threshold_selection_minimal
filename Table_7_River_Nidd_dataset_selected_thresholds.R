@@ -15,6 +15,7 @@ thresholds_list <- list(quantile(nidd.thresh, seq(0,0.93, by=0.01)),quantile(nid
 
 EQD_thr <- wads_thr <- north_thr <- numeric(7)
 for(i in 1:7){
+  print(i)
   thresholds <- thresholds_list[[i]]
   #EQD
   set.seed(11111) 
