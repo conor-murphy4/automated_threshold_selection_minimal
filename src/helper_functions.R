@@ -16,7 +16,7 @@
 #' Improvement over evir function as it returns an error if the (implied) shape
 #' parameter is non-positive. Also properly handles cases where and xi=0 or p<mu.
 #'
-#' @author Zak Varty
+#' @author REDACTED
 #'
 #' @param q vector of quantiles.
 #' @param shape shape parameter (xi)
@@ -92,7 +92,7 @@ pgpd <- function(q, shape, scale = NULL, nu = NULL, mu = 0, skip_checks = FALSE)
 #' parameter is non-positive. Also properly handles cases where and xi=0 or p is not a valid
 #' probability.
 #'
-#' @author Zak Varty
+#' @author REDACTED
 #'
 #' @param p vector of quantiles.
 #' @param shape shape parameter (xi)
@@ -163,7 +163,7 @@ qgpd <- function(p, shape, scale = NULL, nu = NULL, mu = 0){
 #' parameter is non-positive. Also properly handles cases where and xi=0 or x is
 #' outside of the domain of the given distribution.
 #'
-#' @author Zak Varty
+#' @author REDACTED
 #'
 #' @param x vector of values as which to evaluate density.
 #' @param shape shape parameter (xi)
@@ -240,7 +240,7 @@ dgpd <- function(x, shape, scale = NULL, nu = NULL, mu = 0, log = FALSE){
 #' Improvement over evir function as it returns an error if the (implied) shape
 #' parameter is non-positive. Also properly handles cases where and xi=0.
 #'
-#' @author Zak Varty
+#' @author REDACTED
 #'
 #' @param n sample size.
 #' @param shape shape parameter (xi).
@@ -304,7 +304,7 @@ rgpd <- function(n, shape, scale = NULL, nu = NULL, mu = 0){
 
 #' evalue probability mass function of rounded generalised Pareto distribution
 #'
-#' @author Zak Varty
+#' @author REDACTED
 #'
 #' @param x Vector values at which to evaluate mass function
 #' @param u Vector of latent threshold values
