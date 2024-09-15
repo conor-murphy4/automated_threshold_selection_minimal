@@ -2,6 +2,7 @@ library(evir)
 source("src/helper_functions.R")
 
 #Code from evir::shape function adjusted to include bootstrapped confidence intervals in parameter stability plot
+# minor modifications to the original code are indicated by a "#!" comment.
 
 #Function to produce plot showing how the estimate of the shape parameter varies with threshold/quantile
 
@@ -17,7 +18,7 @@ source("src/helper_functions.R")
 # boot - whether or not bootstrapped confidence intervals should be included
 # m.boot - number of bootstraps
 
-shapestabboot <- function (data, thresholds,Q, reverse = TRUE, ci = 0.95, auto.scale = TRUE, labels = TRUE, boot=FALSE, m.boot=200){
+shapestabboot <- function(data, thresholds,Q, reverse = TRUE, ci = 0.95, auto.scale = TRUE, labels = TRUE, boot=FALSE, m.boot=200){
   data <- as.numeric(data)
   n <- length(data)
   qq <- 0
@@ -72,10 +73,10 @@ shapestabboot <- function (data, thresholds,Q, reverse = TRUE, ci = 0.95, auto.s
     lines(index, u, lty = 2, col = 2)
     lines(index, l, lty = 2, col = 2)
   }
-  if(boot){ #added by CM to add bootsrapped intervals to plot
-    lines(index, u_boot, lty = 3, col = "blue")
-    lines(index, l_boot, lty = 3, col = "blue")
-  }
+  if (boot) {                                             #! additional parameter to add bootstrapped intervals to plot
+    lines(index, u_boot, lty = 3, col = "blue")           #! 
+    lines(index, l_boot, lty = 3, col = "blue")           #!
+  }                                                       #!
   if (labels) {
     labely <- expression(hat(xi))
     title(xlab = "Threshold", ylab = labely, cex.lab=1)

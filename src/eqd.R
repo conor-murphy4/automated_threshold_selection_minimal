@@ -7,7 +7,7 @@ source('src/helper_functions.R')
 #'
 #' 'eqd' selects a constant threshold above which the data can be most closely modelled by a Generalised Pareto distribution.
 #'
-#' @author Conor Murphy
+#' @author REDACTED
 #'
 #' @param data A numeric vector.
 #' @param thresh A numeric vector of proposed thresholds to test.

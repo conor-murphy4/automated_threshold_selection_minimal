@@ -1,6 +1,6 @@
 #=====================================================================
 # Functions for Generalised Pareto Distribution.
-# Added option to use nu parameterisation
+# Added option to use nu parametrisation and
 # checks that param values are valid
 #=====================================================================
 # pgpd
