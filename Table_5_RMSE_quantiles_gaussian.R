@@ -222,4 +222,5 @@ for (case in 1:num_cases) {
 
 print(RMSE_gauss)
 
-saveRDS(RMSE_gauss, "output/tables/Table_5_rmse_quantile_estimates_gaussian.rds")
+#saveRDS(RMSE_gauss, "output/tables/Table_5_rmse_quantile_estimates_gaussian.rds")
+write.csv(RMSE_gauss, "output/tables/Table_5_rmse_quantile_estimates_gaussian.csv",row.names = FALSE)
