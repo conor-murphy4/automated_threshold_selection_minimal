@@ -1,10 +1,14 @@
-#Parameters controlling simulation and output
+#===============================================================================
+# Code to produce the estimates shown in Table 5 of the main paper. 
 
-GENERATE_DATA <- FALSE #Change this parameter to TRUE to generate new threshold estimates. If GENERATE_DATA is set to FALSE, the code will use the estimates saved in the output folder.
+# We offer two meta-parameters for faster validation:
 
-FULL_TABLE <- FALSE #Change this parameter to TRUE to include the estimates in Table 5 which relate to the sample size of n=20000. 
-# NOTE: if GENERATE_DATA and FULL_TABLE are both set to TRUE, the code will generate new estimates for n=2000 and n=20000 which will take some time to run.
+GENERATE_DATA <- FALSE  # Generate new threshold estimates (TRUE) or use those saved in the output folder (FALSE)?
+FULL_TABLE    <- FALSE  # Generate all estimates in Table 5 (TRUE) or n = 2000 only (FALSE)? 
 
+# NOTE: If GENERATE_DATA and FULL_TABLE are both TRUE, the code will generate 
+# the entire table for for n=2000 and n=20000, which takes some time to run. 
+#===============================================================================
 
 library(Metrics)
 
