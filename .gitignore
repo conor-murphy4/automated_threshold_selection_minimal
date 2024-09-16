@@ -2,3 +2,12 @@
 .Rhistory
 .RData
 .Ruserdata
+
+data/Gaussian.csv
+output/threshold_selection/wads_gauss.csv
+output/threshold_selection/north_gauss.csv
+output/threshold_selection/eqd_gauss.csv
+output/threshold_selection/wads_gauss_large.csv
+output/threshold_selection/north_gauss_large.csv
+output/threshold_selection/eqd_gauss_large.csv
+
