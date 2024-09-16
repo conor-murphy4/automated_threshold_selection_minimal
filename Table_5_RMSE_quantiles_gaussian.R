@@ -4,7 +4,7 @@
 # We offer two meta-parameters for faster validation:
 
 GENERATE_DATA <- FALSE  # Generate new threshold estimates (TRUE) or use those saved in the output folder (FALSE)?
-FULL_TABLE    <- FALSE  # Generate all estimates in Table 5 (TRUE) or n = 2000 only (FALSE)? 
+FULL_TABLE    <- TRUE  # Generate all estimates in Table 5 (TRUE) or n = 2000 only (FALSE)? 
 
 # NOTE: If GENERATE_DATA and FULL_TABLE are both TRUE, the code will generate 
 # the entire table for for n=2000 and n=20000, which takes quite some time to run. 
@@ -34,7 +34,7 @@ if (GENERATE_DATA) {
   
   for (ii in 1:num_samples) {
     
-    print(ii)
+    cat(paste("Completed", ii, "of", num_samples))
     set.seed(ii)
     data <- rnorm(sample_size)
     data_matrix[ ,ii] <- data
