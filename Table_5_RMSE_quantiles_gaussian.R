@@ -11,6 +11,7 @@ FULL_TABLE    <- FALSE  # Generate all estimates in Table 5 (TRUE) or n = 2000 o
 #===============================================================================
 
 library(Metrics)
+
 if (GENERATE_DATA) {
   source("src/eqd.R")
   source("src/JointMLEFunctions.R")
@@ -75,15 +76,15 @@ if (GENERATE_DATA) {
   }
   
   # reformat simulation output
-  eqdthr_gauss <- data.frame(thr = mythresh, quantile = myquantile, scale = myscale, shape = myshape, len = mylen)
-  wadsthr_gauss <- data.frame(thr = wadsthresh,quantile = wadsquantile, scale = wadsscale, shape = wadsshape, len = wadslen)
-  norththr_gauss <- data.frame(thr = norththresh, quantile = northquantile, scale = northscale, shape = northshape, len = northlen)
+  eqd_gauss <- data.frame(thr = mythresh, quantile = myquantile, scale = myscale, shape = myshape, len = mylen)
+  wads_gauss <- data.frame(thr = wadsthresh,quantile = wadsquantile, scale = wadsscale, shape = wadsshape, len = wadslen)
+  north_gauss <- data.frame(thr = norththresh, quantile = northquantile, scale = northscale, shape = northshape, len = northlen)
   
   # write simulation output to file
   write.csv(data_matrix, "data/Gaussian.csv")
-  write.csv(eqdthr_gauss, "output/threshold_selection/eqd_gauss.csv")
-  write.csv(wadsthr_gauss, "output/threshold_selection/wads_gauss.csv")
-  write.csv(norththr_gauss, "output/threshold_selection/north_gauss.csv")
+  write.csv(eqd_gauss, "output/threshold_selection/eqd_gauss.csv")
+  write.csv(wads_gauss, "output/threshold_selection/wads_gauss.csv")
+  write.csv(north_gauss, "output/threshold_selection/north_gauss.csv")
 }
 
 
@@ -116,7 +117,8 @@ if (GENERATE_DATA & FULL_TABLE) {
     mylen[ii] <- myres$num_excess
       
     # Wadsworth 2016 method
-    wadsthresh[ii] <- NHPP.diag(data, u = thresh, plot.out = FALSE, UseQuantiles = FALSE)$thresh[[1]]
+    wadsthresh[ii] <- NHPP.diag(x = data, u = thresh, plot.out = FALSE, UseQuantiles = FALSE)$thresh[[1]]
+    
     if (!is.na(wadsthresh[ii])) {
       fit.data_w <- data[data > wadsthresh[ii]] - wadsthresh[ii]
       optwads <- optim(GPD_LL, z = fit.data_w, par = c(mean(fit.data_w), 0.1), control = list(fnscale = -1))
@@ -143,22 +145,23 @@ if (GENERATE_DATA & FULL_TABLE) {
   }
   
   # reformat simulation output  
-  eqdthr_gauss <- data.frame(thr = mythresh, quantile = myquantile, scale = myscale, shape = myshape, len = mylen)
-  wadsthr_gauss <- data.frame(thr = wadsthresh,quantile = wadsquantile, scale = wadsscale, shape = wadsshape, len = wadslen)
-  norththr_gauss <- data.frame(thr = norththresh, quantile = northquantile, scale = northscale, shape = northshape, len = northlen)
+  eqd_gauss_large <- data.frame(thr = mythresh, quantile = myquantile, scale = myscale, shape = myshape, len = mylen)
+  wads_gauss_large <- data.frame(thr = wadsthresh,quantile = wadsquantile, scale = wadsscale, shape = wadsshape, len = wadslen)
+  north_gauss_large <- data.frame(thr = norththresh, quantile = northquantile, scale = northscale, shape = northshape, len = northlen)
   
   # write simulation output to file  
   write.csv(data_matrix, "data/Gaussian_large.csv")
-  write.csv(eqdthr_gauss, "output/threshold_selection/eqd_gauss_large.csv")
-  write.csv(wadsthr_gauss, "output/threshold_selection/wads_gauss_large.csv")
-  write.csv(norththr_gauss, "output/threshold_selection/north_gauss_large.csv")
+  write.csv(eqd_gauss_large, "output/threshold_selection/eqd_gauss_large.csv")
+  write.csv(wads_gauss_large, "output/threshold_selection/wads_gauss_large.csv")
+  write.csv(north_gauss_large, "output/threshold_selection/north_gauss_large.csv")
 }
 
 
 # Load data if not being generated ---------------------------------------------
+
 if (!GENERATE_DATA) {
-  eqd_gauss <- read.csv("output/threshold_selection/eqd_gauss_2024-07-24.csv", row.names = 1, header = TRUE)
-  wads_gauss <- read.csv("output/threshold_selection/wads_gauss_2024-07-24.csv", row.names = 1, header = TRUE)
+  eqd_gauss   <- read.csv("output/threshold_selection/eqd_gauss_2024-07-24.csv", row.names = 1, header = TRUE)
+  wads_gauss  <- read.csv("output/threshold_selection/wads_gauss_2024-07-24.csv", row.names = 1, header = TRUE)
   north_gauss <- read.csv("output/threshold_selection/north_gauss_2024-07-24.csv", row.names = 1, header = TRUE)
 }
 
@@ -168,7 +171,7 @@ if (!GENERATE_DATA & FULL_TABLE) {
   north_gauss_large <- read.csv("output/threshold_selection/north_gauss_large_2024-07-24.csv", row.names = 1, header = TRUE)
 }
 
-
+# reformat as lists ------------------------------------------------------------
 if (FULL_TABLE) {
   eqd_list <- list(eqd_gauss, eqd_gauss_large)
   wads_list <- list(wads_gauss, wads_gauss_large)
@@ -178,6 +181,7 @@ if (FULL_TABLE) {
   wads_list <- list(wads_gauss)
   north_list <- list(north_gauss)
 }
+
 
 #------------------Estimated quantiles------------------
 estimated_quantile <- function(df,p,n){
