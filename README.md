@@ -77,29 +77,23 @@ for each of 7 possible candidate threshold grids.
 ![](readme-images/table-7.png)
 
 This table can be generated using the file
-`Table_5_RMSE_quantiles_gaussian.R`. This will take approximately 1
-minute to run.
+`Table_7_River_Nidd_dataset_selected_thresholds.R`. This will take
+approximately 1 minute to run.
 
 ``` r
 source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 #> Loading required package: mgcv
 #> Loading required package: nlme
-#> This is mgcv 1.9-1. For overview type 'help("mgcv-package")'.
+#> This is mgcv 1.9-0. For overview type 'help("mgcv-package")'.
 #> Starting threshold selection with candidate set 1 of 7.
 #>   1/3 selecting threshold using EQD method 
 #>   2/3 selecting threshold using Wadsworth method 
 #>   3/3 selecting threshold using Northrop method 
 #>               box     vals1      vals2 conv
 #> a        1.000000  0.000000  0.0000000    0
-#> b1minus -1.981218 -2.892287  0.3811938    0
-#> b2minus -2.437206  3.507230 -2.6461365   52
-#> b1plus   6.673207 17.479531  6.6888557    0
-#> b2plus   2.779238 11.425202  5.3523571    0
-#>               box     vals1      vals2 conv
-#> a        1.000000  0.000000  0.0000000    0
 #> b1minus -1.853995 -2.688302  0.3984474    0
 #> b2minus -2.596144  5.856059 -3.9627085   52
-#> b1plus   7.096490 20.581203 11.5824325    0
+#> b1plus   7.096490 20.581194 11.5824289    0
 #> b2plus   4.202679 14.539161  9.2294245    0
 #>   It might be worth using the option trans = ``BC''. 
 #>                box     vals1         vals2 conv
@@ -120,12 +114,6 @@ source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 #>   1/3 selecting threshold using EQD method 
 #>   2/3 selecting threshold using Wadsworth method 
 #>   3/3 selecting threshold using Northrop method 
-#>               box     vals1      vals2 conv
-#> a        1.000000  0.000000  0.0000000    0
-#> b1minus -1.981218 -2.892287  0.3811938    0
-#> b2minus -2.437206  3.507230 -2.6461365   52
-#> b1plus   6.673207 17.479531  6.6888557    0
-#> b2plus   2.779238 11.425202  5.3523571    0
 #> Starting threshold selection with candidate set 3 of 7.
 #>   1/3 selecting threshold using EQD method 
 #>   2/3 selecting threshold using Wadsworth method 
@@ -162,3 +150,5 @@ source("Table_7_River_Nidd_dataset_selected_thresholds.R")
   “Code_submission_technometrics” \>\> something linked to paper title.
 
 - \[\] Run full table 5 and give approximate time with `{tictoc}`.
+
+- \[\] Add a response to the editor summarising the new submission.
