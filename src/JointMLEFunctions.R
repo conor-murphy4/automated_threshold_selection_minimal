@@ -1,7 +1,11 @@
-#######################################################################################################
-# Code taken from the supplementary materials of Wadsworth (2016) at https://www.tandfonline.com/doi/abs/10.1080/00401706.2014.998345 
-# and adapted to count the number of samples where the method fails to estimate a threshold. 
-#######################################################################################################
+################################################################################
+# Code taken from the supplementary materials of Wadsworth (2016) at 
+# https://www.tandfonline.com/doi/abs/10.1080/00401706.2014.998345 
+# and adapted to count the number of samples where the method fails
+# to estimate a threshold. 
+
+# minor modifications to the original code are indicated by a "#!" comment.
+################################################################################
 
 # NHPP.diag
 
@@ -11,16 +15,21 @@
 
 # Arguments:
 
-# x - data vector
-# u - optional; vector of candidate thresholds
-# k - number of thresholds to consider (if u unspecified)
-# q1 -  lowest quantile for the threshold sequence
-# q2 -  upper quantile limit for the threshold sequence (q2 itself is not used as a threshold, but rather the uppermost 
+# x   - data vector
+# u   - optional; vector of candidate thresholds
+# k   - number of thresholds to consider (if u unspecified)
+# q1  -  lowest quantile for the threshold sequence
+# q2  -  upper quantile limit for the threshold sequence 
+#       (q2 itself is not used as a threshold, but rather the uppermost 
 #       threshold will be at the (q2-1/k) quantile)
-# M - number of superpositions or "blocks" / "years" the process corresponds to (can affect the optimization)
-# nbs - number of simulations used to assess the null distribution of the LRT, and produce the p-value
+# M   - number of superpositions or "blocks" / "years" the process corresponds to 
+#       (can affect the optimization)
+# nbs - number of simulations used to assess the null distribution of the LRT,
+#       and produce the p-value
 # alpha - significance level of the LRT
-# plots - which plots to produce; "LRT"= likelihood ratio test, "WN" = white noise, "PS" = parameter stability
+# plots - which plots to produce; "LRT"= likelihood ratio test, 
+#                                 "WN" = white noise, 
+#                                 "PS" = parameter stability
 # UseQuantiles - logical; use quantiles as the thresholds in the plot?
 # pmar - vector of length 4 giving the arguments for the plot margins in par(mar=c(*,*,*,*))
 
@@ -36,7 +45,6 @@
 # k - final number of thresholds used
 # thresh - threshold selected by LR procedure
 # mle.u - MLE from selected threshold
-
 
 NHPP.diag<-function(x, u= NULL, k, q1, q2=1, par=NULL, M=NULL, nbs=1000, alpha=0.05,plot.out=TRUE, plots=c("LRT", "WN", "PS"), UseQuantiles=TRUE,pmar=c(5.5,7,3,3),...)
 {
@@ -63,11 +71,12 @@ NHPP.diag<-function(x, u= NULL, k, q1, q2=1, par=NULL, M=NULL, nbs=1000, alpha=0
   par(las=1)
   J1<-Joint.MLE.NHPP(x=x, u=u, k=k, q1=q1, q2=q2, par=par,M=M)
   warn<-any(eigen(J1$Cov.xi)$val<=.Machine$double.eps)
-  if(!unull&&warn){
-    ustar<-NA #added by CM to count samples where method fails 
-  return(list(thresh=ustar)) #added by CM
-  }
-  #stop("Estimated covariance matrix for xi not positive definite: try different thresholds")} #commented by CM
+  if(!unull&&warn){                                             #!
+    ustar<-NA                                                   #! added to count samples where method fails 
+  return(list(thresh=ustar))                                    #! 
+  }                                                             #!
+                                                                #! comment out line below, we want to record not print warnings
+  #stop("Estimated covariance matrix for xi not positive definite: try different thresholds")}
   
   while(any(eigen(J1$Cov.xi)$val<=.Machine$double.eps))
   {
@@ -96,7 +105,7 @@ NHPP.diag<-function(x, u= NULL, k, q1, q2=1, par=NULL, M=NULL, nbs=1000, alpha=0
 
   if(unull){qs<- seq(q1, q2, len=k+1)[-(k+1)]}
   
-  if(plot.out==TRUE){ #added by CM so plots are not outputted during simulation study
+  if (plot.out == TRUE) { #!added parameter to suppress unnecessary plots during simulation study
     if(is.element("LRT",plots)){
       if(UseQuantiles && unull)
       {plot(qs, c(rep(NA,2),nl[,2]),xlab="Quantile",ylab="LR statistic", main=paste("p-value:", pval),...)}
