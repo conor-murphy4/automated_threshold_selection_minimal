@@ -102,7 +102,7 @@ if (GENERATE_DATA & FULL_TABLE) {
   data_matrix <- matrix(NA, nrow = sample_size, ncol = num_samples)
     
   for (ii in 1:num_samples) {
-    print(ii)
+    cat(paste("Completed", ii, "of", num_samples))
     set.seed(ii)
     data <- rnorm(sample_size)
     data_matrix[,ii] <- data
