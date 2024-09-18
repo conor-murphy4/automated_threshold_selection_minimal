@@ -222,9 +222,15 @@ for (case in 1:num_cases) {
     EQD = eqd_rmse_quants,
     Wadsworth = wads_rmse_quants,
     Northrop = north_rmse_quants)
+  
 }
 
+# Print and save Table 5
 print(RMSE_gauss)
 
-#saveRDS(RMSE_gauss, "output/tables/Table_5_rmse_quantile_estimates_gaussian.rds")
-write.csv(RMSE_gauss, "output/tables/Table_5_rmse_quantile_estimates_gaussian.csv",row.names = FALSE)
+for (case in 1:num_cases) {
+  csv_path <- "output/tables/Table_5_rmse_quantile_estimates_gaussian_"
+  csv_name <- paste0(csv_path, sample_sizes[case], ".csv")
+  write.csv(x = RMSE_gauss, file = csv_name, row.names = FALSE)
+}
+
