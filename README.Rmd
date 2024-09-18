@@ -73,6 +73,12 @@ source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 
 - [ ] Give directory and repo an informative name. "Code_submission_technometrics" >> something linked to paper title.
 
-- [] Run full table 5 and give approximate time with `{tictoc}`.
+- [ ] Run full table 5 and give approximate time with `{tictoc}`.
 
-- [] Add a response to the editor summarising the new submission.
+- [ ] Add a response to the editor summarising the new submission.
+
+- [ ] Find source of warnings in threshr code OR add explanation in README to explain warnings.
+
+- [ ] Double-check output with results in paper.
+
+- [ ] Make a new branch with details for checks on Figure 1 and 2. j
