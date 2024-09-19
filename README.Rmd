@@ -45,7 +45,7 @@ Figure 2 of the main paper shows a QQ-plot and return level estimates for the Ri
 
 ![](readme-images/figure-2.png)
 
-This figure can be generated using the file `Figure_2_River_Nidd_analysis.R`. This file will take approximately TIME to run.
+This figure can be generated using the file `Figure_2_River_Nidd_analysis.R`. This file will take approximately 1.9 hours to run.
 
 ```{r}
 source("Figure_2_River_Nidd_analysis.R")
