@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 # Automated Threshold Selection and Associated Inference Uncertainty for Univariate Extremes
 
-This minimal repository contains R code to generate table 5 and table 7 in the paper "Automated threshold selection and associated inference uncertainty for univariate extremes".
+This minimal repository contains R code to generate figure 1, figure 2 table 5 and table 7,  in the paper "Automated threshold selection and associated inference uncertainty for univariate extremes".
 
 Code to reproduce all results from the main paper and supplementary material is available at this GitHub repository. (link redacted for anonymity during review)
 
@@ -28,6 +28,28 @@ install.packages(required_packages)
 
 
 ## Getting Started 
+
+### Generate Figure 1
+Figure 1 of the main paper shows two examples of stability plots for the generalised Pareto distribution shape parameter, $\xi$. These plots are generated utilising code from the `evir` package which has been edited to include bootstrap-based confidence intervals in the plots. The figure contains stability plots for the River Nidd dataset and the first sample simulated from Case 4 of the simulation study. 
+
+![](readme-images/figure-1.png)
+This figure can be generated using the file `Figure_1_example_parameter_stability_plots.R`. 
+
+```{r}
+source("Figure_1_example_parameter_stability_plots.R")
+```
+
+### Generate Figure 2
+
+Figure 2 of the main paper shows a QQ-plot and return level estimates for the River Nidd dataset. The figure contains two panels; the first shows the QQ-plot with 95% tolerance bounds using the threshold selected by the EQD method; the second shows return level estimates with two sets of 95% confidence intervals incorporating parameter uncertainty alone and additionally, threshold uncertainty. 
+
+![](readme-images/figure-2.png)
+
+This figure can be generated using the file `Figure_2_River_Nidd_analysis.R`. This file will take approximately TIME to run.
+
+```{r}
+source("Figure_2_River_Nidd_analysis.R")
+```
 
 ### Generate Table 5
 
@@ -45,7 +67,7 @@ Generating the full table takes quite some time and so we offer two meta-paramet
 
 - `GENERATE_DATA`: Generate Gaussian data and threshold estimates (`TRUE`) or use those saved in the output folder (`FALSE`)?
 
-- `FULL_TABLE`: Generate estimates for both $n = 20,000$ and $n = 2000$ (`TRUE`) or n = 2000 only (`FALSE`)?
+- `FULL_TABLE`: Generate estimates for both $n = 20,000$ and $n = 2000$ (`TRUE`) or $n = 2000$ only (`FALSE`)?
 
 Approximate run-times are given in the table below. 
 
@@ -54,7 +76,7 @@ Approximate run-times are given in the table below.
 | FALSE           | FALSE        | 0.2 seconds          |
 | FALSE           | TRUE         | 0.2 seconds          |
 | TRUE            | FALSE        | 30 minutes           |
-| TRUE            | TRUE         | ????                 |
+| TRUE            | TRUE         | 19.9 hours           |
 
 
 ### Generate Table 7
@@ -71,14 +93,7 @@ source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 
 # To Do 
 
-- [ ] Give directory and repo an informative name. "Code_submission_technometrics" >> something linked to paper title.
-
-- [ ] Run full table 5 and give approximate time with `{tictoc}`.
-
 - [ ] Add a response to the editor summarising the new submission.
 
 - [ ] Find source of warnings in threshr code OR add explanation in README to explain warnings.
 
-- [ ] Double-check output with results in paper.
-
-- [ ] Make a new branch with details for checks on Figure 1 and 2. j
