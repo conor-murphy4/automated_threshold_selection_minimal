@@ -388,5 +388,5 @@ generate_case4_data <- function(chosen_seed, initial_sample_size = 4000, shape =
   data_above_cens_thr <- data_all[data_all > cens_thr & data_all <= mu]
   final_sample_above <- sample(x = data_above_mu, size = 279, replace=FALSE)
   final_sample_below <- sample(x = data_above_cens_thr, size = 721, replace = FALSE)
-  return(c(data_below, data_above))
+  return(c(final_sample_below, final_sample_above))
 }
