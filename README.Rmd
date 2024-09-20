@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -13,7 +13,12 @@ knitr::opts_chunk$set(
 
 # Automated Threshold Selection and Associated Inference Uncertainty for Univariate Extremes
 
-This minimal repository contains R code to generate figure 1, figure 2 table 5 and table 7,  in the paper "Automated threshold selection and associated inference uncertainty for univariate extremes".
+This minimal repository contains R code to generate selected figures and tables from the paper "Automated threshold selection and associated inference uncertainty for univariate extremes".
+
+- __Figure 1:__ Example parameter stability plots,
+- __Figure 2:__ River Nidd QQ-plot and return level estimates,
+- __Table 5:__  Method comparison, RMSE of quantile estimates,
+- __Table 6:__  Method comparison, river Nidd threshold selection.
 
 Code to reproduce all results from the main paper and supplementary material is available at this GitHub repository. (link redacted for anonymity during review)
 
@@ -21,7 +26,7 @@ Code to reproduce all results from the main paper and supplementary material is 
 
 The following code snippet with install the packages required to run the code in this repository.
 
-```{r, eval=FALSE}
+```{r required-packages, eval=FALSE}
 required_packages <- c("evir", "ismev", "Metrics", "mgcv", "nlme", "threshr")
 install.packages(required_packages)
 ```
@@ -30,12 +35,14 @@ install.packages(required_packages)
 ## Getting Started 
 
 ### Generate Figure 1
+
 Figure 1 of the main paper shows two examples of stability plots for the generalised Pareto distribution shape parameter, $\xi$. These plots are generated utilising code from the `evir` package which has been edited to include bootstrap-based confidence intervals in the plots. The figure contains stability plots for the River Nidd dataset and the first sample simulated from Case 4 of the simulation study. 
 
 ![](readme-images/figure-1.png)
+
 This figure can be generated using the file `Figure_1_example_parameter_stability_plots.R`. 
 
-```{r}
+```{r figure-1-example-parameter-stability-plots, eval=FALSE}
 source("Figure_1_example_parameter_stability_plots.R")
 ```
 
@@ -45,9 +52,9 @@ Figure 2 of the main paper shows a QQ-plot and return level estimates for the Ri
 
 ![](readme-images/figure-2.png)
 
-This figure can be generated using the file `Figure_2_River_Nidd_analysis.R`. This file will take approximately 1.9 hours to run.
+This figure can be generated using the file `Figure_2_River_Nidd_analysis.R`. This file will take approximately 2 hours to run.
 
-```{r}
+```{r figure-2-river-nidd-analysis, eval=FALSE}
 source("Figure_2_River_Nidd_analysis.R")
 ```
 
@@ -59,7 +66,7 @@ Table 5 of the main paper compares the EQD, Wadsworth and Northrop methods for e
 
 This table can be generated using the file `Table_5_RMSE_quantiles_gaussian.R`. 
 
-```{r}
+```{r table-5-rmse-quantiles-gaussian}
 source("Table_5_RMSE_quantiles_gaussian.R")
 ```
 
@@ -76,7 +83,7 @@ Approximate run-times are given in the table below.
 | FALSE           | FALSE        | 0.2 seconds          |
 | FALSE           | TRUE         | 0.2 seconds          |
 | TRUE            | FALSE        | 30 minutes           |
-| TRUE            | TRUE         | 19.9 hours           |
+| TRUE            | TRUE         | 20 hours             |
 
 
 ### Generate Table 7
@@ -87,13 +94,8 @@ Table 7 of the main paper compares the thresholds selected by the EQD, Wadsworth
 
 This table can be generated using the file `Table_7_River_Nidd_dataset_selected_thresholds.R`. This will take approximately 1 minute to run. 
 
-```{r, warning=FALSE}
+```{r table-7-river-nidd-selected-thresholds, warning=TRUE}
 source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 ```
 
-# To Do 
-
-- [ ] Add a response to the editor summarising the new submission.
-
-- [ ] Find source of warnings in threshr code OR add explanation in README to explain warnings.
 
