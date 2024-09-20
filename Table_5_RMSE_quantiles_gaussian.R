@@ -226,11 +226,13 @@ for (case in 1:num_cases) {
 }
 
 # Print and save Table 5
-print(RMSE_gauss)
+for(case in 1:num_cases){
+  print(paste("Sample size:", sample_sizes[case]))
+  print(round(RMSE_gauss[[case]], digits = 3))
+}
 
 for (case in 1:num_cases) {
   csv_path <- "output/tables/Table_5_rmse_quantile_estimates_gaussian_"
   csv_name <- paste0(csv_path, sample_sizes[case], ".csv")
-  write.csv(x = RMSE_gauss, file = csv_name, row.names = FALSE)
+  write.csv(x = RMSE_gauss[[case]], file = csv_name, row.names = FALSE)
 }
-
