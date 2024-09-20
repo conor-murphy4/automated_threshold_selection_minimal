@@ -8,6 +8,10 @@ FULL_TABLE    <- TRUE  # Generate all estimates in Table 5 (TRUE) or n = 2000 on
 
 # NOTE: If GENERATE_DATA and FULL_TABLE are both TRUE, the code will generate 
 # the entire table for for n=2000 and n=20000, which takes quite some time to run. 
+
+# NOTE: When GENERATE_DATE is TRUE, for some samples in this study, when using high candidate thresholds, 
+# the Northrop method, for which the `threshr` package is utilised, will output convergence warnings. 
+# These warnings are expected and the method still selects a threshold in these cases. 
 #===============================================================================
 
 library(Metrics)

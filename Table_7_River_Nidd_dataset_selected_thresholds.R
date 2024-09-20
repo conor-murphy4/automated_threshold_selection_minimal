@@ -1,5 +1,10 @@
 #===============================================================================
 # Code to produce the estimates shown in Table 7 of the main paper. 
+
+# NOTE: As noted in the main paper, for the first candidate grid in this table, 
+# the Northrop method, for which the `threshr` package is utilised, will output 
+# convergence warnings. These warnings are expected and the method still selects
+# a threshold in this case.
 #===============================================================================
 
 SEED = 11111

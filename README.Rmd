@@ -18,13 +18,13 @@ This minimal repository contains R code to generate selected figures and tables 
 - __Figure 1:__ Example parameter stability plots,
 - __Figure 2:__ River Nidd QQ-plot and return level estimates,
 - __Table 5:__  Method comparison, RMSE of quantile estimates,
-- __Table 6:__  Method comparison, river Nidd threshold selection.
+- __Table 7:__  Method comparison, River Nidd threshold selection.
 
 Code to reproduce all results from the main paper and supplementary material is available at this GitHub repository. (link redacted for anonymity during review)
 
 ## Required Packages
 
-The following code snippet with install the packages required to run the code in this repository.
+The following code snippet will install the packages required to run the code in this repository.
 
 ```{r required-packages, eval=FALSE}
 required_packages <- c("evir", "ismev", "Metrics", "mgcv", "nlme", "threshr")
@@ -36,7 +36,7 @@ install.packages(required_packages)
 
 ### Generate Figure 1
 
-Figure 1 of the main paper shows two examples of stability plots for the generalised Pareto distribution shape parameter, $\xi$. These plots are generated utilising code from the `evir` package which has been edited to include bootstrap-based confidence intervals in the plots. The figure contains stability plots for the River Nidd dataset and the first sample simulated from Case 4 of the simulation study. 
+Figure 1 of the main paper shows two examples of stability plots for the generalised Pareto distribution shape parameter, $\xi$. These plots are generated utilising code from the `evir` package which has been edited to include bootstrap-based confidence intervals in the plots. The figure contains stability plots for the first sample simulated from Case 4 of the simulation study and the River Nidd dataset. 
 
 ![](readme-images/figure-1.png)
 
@@ -66,15 +66,17 @@ Table 5 of the main paper compares the EQD, Wadsworth and Northrop methods for e
 
 This table can be generated using the file `Table_5_RMSE_quantiles_gaussian.R`. 
 
+NOTE: For some samples in this study, when using high candidate thresholds, the Northrop method, for which the `threshr` package is utilised, will output convergence warnings. These warnings are expected and the method still selects a threshold in these cases. 
+
 ```{r table-5-rmse-quantiles-gaussian}
 source("Table_5_RMSE_quantiles_gaussian.R")
 ```
 
 Generating the full table takes quite some time and so we offer two meta-parameters at the top of this script to allow faster validation. 
 
-- `GENERATE_DATA`: Generate Gaussian data and threshold estimates (`TRUE`) or use those saved in the output folder (`FALSE`)?
+- `GENERATE_DATA`: Generate Gaussian data and threshold estimates (`TRUE`) or use those saved in the output folder (`FALSE`).
 
-- `FULL_TABLE`: Generate estimates for both $n = 20,000$ and $n = 2000$ (`TRUE`) or $n = 2000$ only (`FALSE`)?
+- `FULL_TABLE`: Generate estimates for both $n = 20,000$ and $n = 2000$ (`TRUE`) or $n = 2000$ only (`FALSE`).
 
 Approximate run-times are given in the table below. 
 
@@ -93,6 +95,8 @@ Table 7 of the main paper compares the thresholds selected by the EQD, Wadsworth
 ![](readme-images/table-7.png)
 
 This table can be generated using the file `Table_7_River_Nidd_dataset_selected_thresholds.R`. This will take approximately 1 minute to run. 
+
+NOTE: As noted in the main paper, for the first candidate grid in this table, the Northrop method, for which the `threshr` package is utilised, will output convergence warnings. These warnings are expected and the method still selects a threshold in this case.
 
 ```{r table-7-river-nidd-selected-thresholds, warning=TRUE}
 source("Table_7_River_Nidd_dataset_selected_thresholds.R")
