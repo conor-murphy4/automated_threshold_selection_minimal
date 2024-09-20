@@ -92,7 +92,7 @@ boot_thr <- numeric(num_boot)
 
 # Obtain bootstrap estimates of return levels incorporating uncertainty in parameter estimates and threshold selection
 
-# NOTE: This section of code will take approximately TIME to run!
+# NOTE: This section of code will take approximately 2 hours to run!
 set.seed(SEED)
 for (i in 1:num_boot) {
   cat(paste("Bootstrapping iteration: ", i, "of", num_boot,  "\n"))
