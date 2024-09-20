@@ -55,6 +55,6 @@ for (i in seq_along(thresholds_list)) {
 }
 
 table_7 <- data.frame(EQD = EQD_thr, Wadsworth = wads_thr, Northrop = north_thr)
-print(table_7)
+print(round(table_7,digits = 2))
 
 write.csv(table_7, OUTPUT_PATH)
