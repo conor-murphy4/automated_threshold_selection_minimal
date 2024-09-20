@@ -340,7 +340,7 @@ dgpd_rd <- function(x, u, sig_u, xi, to_nearest){
 
 #' Generalised Pareto log-likelihood
 #'
-#' @author Conor Murphy
+#' @author REDACTED
 #'
 #' @param par A numeric vector of parameter values of length 2.
 #' @param z A numeric vector of excesses of some threshold.
@@ -380,3 +380,13 @@ transform_to_exp <- function (y,sig, xi){
   return(std_exp)
 }
 
+generate_case4_data <- function(chosen_seed, initial_sample_size = 4000, shape = 0.1, scale = 0.5, mu = 1){
+  set.seed(chosen_seed)
+  data_all <- rgpd(n = initial_sample_size, shape = shape, scale = scale, mu = 0)
+  cens_thr <- mu * rbeta(n = initial_sample_size, shape1 = 1, shape2 = 2)
+  data_above_mu <- data_all[data_all > mu]
+  data_above_cens_thr <- data_all[data_all > cens_thr & data_all <= mu]
+  final_sample_above <- sample(x = data_above_mu, size = 279, replace=FALSE)
+  final_sample_below <- sample(x = data_above_cens_thr, size = 721, replace = FALSE)
+  return(c(final_sample_below, final_sample_above))
+}
