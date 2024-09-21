@@ -16,6 +16,11 @@ Code to reproduce all results from the main paper and supplementary
 material is available at this GitHub repository. (link redacted for
 anonymity during review)
 
+NOTE: Figure 1 and Figure 2 are generated as pdf files and saved. The
+location in which they are saved is given as `FIGURE_PATH` at the top of
+each of the files. Table 1 and 2 are printed to the console and also
+saved as csv files.
+
 ## Required Packages
 
 The following code snippet will install the packages required to run the
@@ -70,7 +75,7 @@ source("Figure_2_River_Nidd_analysis.R")
 Table 5 of the main paper compares the EQD, Wadsworth and Northrop
 methods for extreme value threshold selection on Gaussian data.
 Thresholds are chosen using each method for 500 samples at each of two
-different sample sizes, $n = 2000$ and $n = 20,000$.
+different sample sizes, $n = 2000$ and $n = 20000$.
 
 ![](readme-images/table-5.png)
 
@@ -102,7 +107,7 @@ meta-parameters at the top of this script to allow faster validation.
 - `GENERATE_DATA`: Generate Gaussian data and threshold estimates
   (`TRUE`) or use those saved in the output folder (`FALSE`).
 
-- `FULL_TABLE`: Generate estimates for both $n = 20,000$ and $n = 2000$
+- `FULL_TABLE`: Generate estimates for both $n = 20000$ and $n = 2000$
   (`TRUE`) or $n = 2000$ only (`FALSE`).
 
 Approximate run-times are given in the table below.
