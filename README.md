@@ -82,10 +82,10 @@ different sample sizes, $n = 2000$ and $n = 20000$.
 This table can be generated using the file
 `Table_5_RMSE_quantiles_gaussian.R`.
 
-NOTE: In this study we directly use the Northrop method as implemented 
-in the `threshr` package. This will output convergence warnings for 
-high candidate thresholds. These warnings are expected and the method 
-still selects a threshold in these cases.
+NOTE: In this study, we directly use the Northrop method as implemented
+in the `threshr` package. This will output convergence warnings for high
+candidate thresholds. These warnings are expected and the method still
+selects a threshold in these cases.
 
 ``` r
 source("Table_5_RMSE_quantiles_gaussian.R")
@@ -131,16 +131,17 @@ This table can be generated using the file
 `Table_7_River_Nidd_dataset_selected_thresholds.R`. This will take
 approximately 1 minute to run.
 
-NOTE: In this study we directly use the Northrop method as implemented 
+NOTE: In this study we directly use the Northrop method as implemented
 in the `threshr` package. As noted in the main paper, this will output
 convergence warnings for the first candidate grid in this table. These
-warnings are expected and the method still selects a threshold in this case.
+warnings are expected and the method still selects a threshold in this
+case.
 
 ``` r
 source("Table_7_River_Nidd_dataset_selected_thresholds.R")
 #> Loading required package: mgcv
 #> Loading required package: nlme
-#> This is mgcv 1.9-0. For overview type 'help("mgcv-package")'.
+#> This is mgcv 1.9-1. For overview type 'help("mgcv-package")'.
 #> Starting threshold selection with candidate set 1 of 7.
 #>   1/3 selecting threshold using EQD method 
 #>   2/3 selecting threshold using Wadsworth method 
