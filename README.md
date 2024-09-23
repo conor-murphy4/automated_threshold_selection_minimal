@@ -82,10 +82,10 @@ different sample sizes, $n = 2000$ and $n = 20000$.
 This table can be generated using the file
 `Table_5_RMSE_quantiles_gaussian.R`.
 
-NOTE: For some samples in this study, when using high candidate
-thresholds, the Northrop method, for which the `threshr` package is
-utilised, will output convergence warnings. These warnings are expected
-and the method still selects a threshold in these cases.
+NOTE: In this study we directly use the Northrop method as implemented 
+in the `threshr` package. This will output convergence warnings for 
+high candidate thresholds. These warnings are expected and the method 
+still selects a threshold in these cases.
 
 ``` r
 source("Table_5_RMSE_quantiles_gaussian.R")
@@ -131,10 +131,10 @@ This table can be generated using the file
 `Table_7_River_Nidd_dataset_selected_thresholds.R`. This will take
 approximately 1 minute to run.
 
-NOTE: As noted in the main paper, for the first candidate grid in this
-table, the Northrop method, for which the `threshr` package is utilised,
-will output convergence warnings. These warnings are expected and the
-method still selects a threshold in this case.
+NOTE: In this study we directly use the Northrop method as implemented 
+in the `threshr` package. As noted in the main paper, this will output
+convergence warnings for the first candidate grid in this table. These
+warnings are expected and the method still selects a threshold in this case.
 
 ``` r
 source("Table_7_River_Nidd_dataset_selected_thresholds.R")
