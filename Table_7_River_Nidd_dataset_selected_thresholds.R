@@ -16,7 +16,7 @@ library(ismev)
 library(mgcv)
 library(nlme)
 source("src/eqd.R")
-source("src/JointMLEFunctions.r")
+source("src/JointMLEFunctions.R")
 
 # Table 7:  --------------------------------------------------------------------
 
