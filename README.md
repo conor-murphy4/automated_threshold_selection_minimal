@@ -13,8 +13,8 @@ inference uncertainty for univariate extremes”.
 - **Table 7:** Method comparison, River Nidd threshold selection.
 
 Code to reproduce all results from the main paper and supplementary
-material is available at this GitHub repository. (link redacted for
-anonymity during review)
+material is available at this [GitHub
+repository](https://github.com/conor-murphy4/automated_threshold_selection).
 
 NOTE: Figure 1 and Figure 2 are generated as pdf files and saved. The
 location in which they are saved is given as `FIGURE_PATH` at the top of

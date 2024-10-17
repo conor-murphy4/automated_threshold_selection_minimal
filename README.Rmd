@@ -20,7 +20,7 @@ This minimal repository contains R code to generate selected figures and tables 
 - __Table 5:__  Method comparison, RMSE of quantile estimates,
 - __Table 7:__  Method comparison, River Nidd threshold selection.
 
-Code to reproduce all results from the main paper and supplementary material is available at this GitHub repository. (link redacted for anonymity during review)
+Code to reproduce all results from the main paper and supplementary material is available at this [GitHub repository](https://github.com/conor-murphy4/automated_threshold_selection).
 
 NOTE: Figure 1 and Figure 2 are generated as pdf files and saved. The location in which they are saved is given as `FIGURE_PATH` at the top of each of the files. Table 1 and 2 are printed to the console and also saved as csv files.
 
